@@ -1,0 +1,44 @@
+#include <iostream>
+
+using namespace std;
+
+int vec[1000001], maxim[1000001], minim[1000001], i, j, n, difmax = -1000000001, maxi = -1000000000, mini = 1000000001;
+
+int main()
+{
+    cin >> n;
+    
+    for(i = 1; i <= n; i ++)
+    {
+        cin >> vec[i];
+
+        if(maxi < vec[i])
+        {
+            maxi = vec[i];
+        }
+        
+        maxim[i] = maxi;
+    }
+
+    for(i = n; i >= 1; i --)
+    {
+        if(mini > vec[i])
+        {
+            mini = vec[i];
+        }
+        
+        minim[i] = mini;  
+    }
+    
+    for(i = 1; i < n; i ++)
+    {
+        if(maxim[i] - minim[i + 1] > difmax)
+        {
+            difmax = maxim[i] - minim[i + 1];
+        }
+    }
+    
+    cout << difmax;
+    
+    return 0;
+}
